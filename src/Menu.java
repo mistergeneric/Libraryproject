@@ -28,17 +28,22 @@ public class Menu {
 
     public void mainMenu() {
         scanner = new Scanner(System.in);
-        scanner.reset();
 
         System.out.println("Welcome to the Library system");
+        boolean firstRun = true;
+
 
         while(true) {
             System.out.println("Choose an option");
             System.out.println("1. Insert data");
             System.out.println("2. Query data");
             System.out.println("3. Quit");
+            if(!firstRun) {
+                scanner.nextLine();
+            }
             String choice = scanner.nextLine();
             chooseMenu(choice);
+            firstRun = false;
         }
     }
 

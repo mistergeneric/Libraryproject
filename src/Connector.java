@@ -51,6 +51,8 @@ public class Connector {
             }
             System.out.println("Members with " + userInput + "'s on loan:");
             memberNames.forEach(System.out::println);
+            System.out.println("Press Any Key To Continue");
+            new Scanner(System.in).nextLine();
             closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -72,7 +74,9 @@ public class Connector {
 
             int row = preparedStatement.executeUpdate();
             connection.commit();
-            System.out.println("Update successful - " + row + " rows added");
+            String plural = (row == 1) ? "row" : "rows";
+            System.out.println("Update successful - " + row + " " + plural + " added");
+
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Inserting to Database failed");
